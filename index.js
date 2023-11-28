@@ -15,23 +15,7 @@ const contentInfo = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
-    AFRAME.registerComponent('cursor-listener', {
-        init: function () {
-            contentInfo.forEach(content => {
-                var videoEntity = document.getElementById("entity" + content.id.toString());
-                var video = document.getElementById("video" + content.id.toString());
 
-                this.el.addEventListener('click', function () {
-                    if (!video.isPlaying) { 
-                        video.play(); 
-                    } else {
-                        video.stop();
-                    }
-                    videoEntity.setAttribute('visible', 'true');
-                });
-            });
-        }
-    });
 
     const sceneEl = document.querySelector('a-scene');
     let arSystem;
@@ -55,9 +39,19 @@ document.addEventListener("DOMContentLoaded", () => {
         entity.setAttribute("disabled", "false");
         let video = document.getElementById("video" + content.id.toString());
         video.setAttribute("src", "#" + content.name);
-        video.addEventListener("click", event => {
-            console.log(event);
-            video.play();
-        })
+    });
+// add events
+    contentInfo.forEach(content => {
+        var videoEntity = document.getElementById("entity" + content.id.toString());
+        var video = document.getElementById("video" + content.id.toString());
+        console.log("added event", videoEntity);
+
+        videoEntity.addEventListener('click', event => {
+            if (!video.isPlaying) {
+                video.play();
+            } else {
+                video.stop();
+            }
+        });
     });
 });
