@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         newAsset.setAttribute("src", content.src);
         newAsset.setAttribute("loop", "true");
         newAsset.setAttribute("autoplay", "true");
+        newAsset.setAttribute("muted", "");
         assetsEl.appendChild(newAsset);
     });
     assetsDiv.parentNode.replaceChild(assetsEl, assetsDiv);
@@ -42,16 +43,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 // add events
     contentInfo.forEach(content => {
-        // var videoEntity = document.getElementById("entity" + content.id.toString());
-        var video = document.getElementById("video" + content.id.toString());
-        console.log("added event", video);
+        var videoEntity = document.getElementById("entity" + content.id.toString());
 
-        video.addEventListener('click', event => {
-            if (!video.isPlaying) {
-                video.play();
-            } else {
-                video.stop();
-            }
+        videoEntity.addEventListener("targetLost", event => {
+            console.log("lost", content.id);
+            const video = document.querySelector("#" + content.name);
+            video.pause();
+        });
+
+        videoEntity.addEventListener("targetFound", event => {
+            console.log("found");
+            const video = document.querySelector("#" + content.name);
+            video.play();
+        });
+
+        const vid = document.querySelector("#" + content.name);
+
+        vid.addEventListener("click", event => {
+            console.log("click");
+            vid.setAttribute("muted", false);
+            vid.play();
         });
     });
 });
