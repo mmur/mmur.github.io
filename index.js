@@ -1,4 +1,4 @@
-let contentIndex = 0;
+let contentIndex = -1;
 const contentInfo = [
     {
         "id": 0,
@@ -41,28 +41,44 @@ document.addEventListener("DOMContentLoaded", () => {
         let video = document.getElementById("video" + content.id.toString());
         video.setAttribute("src", "#" + content.name);
     });
-// add events
+    // add events
     contentInfo.forEach(content => {
         var videoEntity = document.getElementById("entity" + content.id.toString());
 
         videoEntity.addEventListener("targetLost", event => {
-            console.log("lost", content.id);
+            contentIndex = -1;
+            console.log("lost");
             const video = document.querySelector("#" + content.name);
+            video.muted = true;
             video.pause();
+            video.currentTime = 0;
         });
 
         videoEntity.addEventListener("targetFound", event => {
-            console.log("found");
-            const video = document.querySelector("#" + content.name);
-            video.play();
+            if (event.srcElement.id === "entity" + content.id.toString()) {
+                contentIndex = content.id;
+                console.log("found");
+                const video = document.querySelector("#" + content.name);
+                video.play();
+            }
         });
 
-        const vid = document.querySelector("#" + content.name);
+        // const vid = document.querySelector("#" + content.name);
 
-        vid.addEventListener("click", event => {
-            console.log("click");
-            vid.setAttribute("muted", false);
-            vid.play();
+        // vid.addEventListener("click", event => {
+        //     console.log("click", "entity" + content.id.toString());
+        //     if (event.srcElement.id === "entity" + content.id.toString()) {
+        //         contentIndex = content.id;
+        //         vid.muted = false;
+        //         vid.play();
+        //     }
+        // });
+
+        document.querySelector("#btnUnmute").addEventListener("click", (e) => {
+            if (contentIndex > -1 && contentIndex === content.id) {
+                console.log("muting ", contentIndex, document.querySelector("#" + content.name).muted);
+                document.querySelector("#" + content.name).muted = !document.querySelector("#" + content.name).muted;
+            }
         });
     });
 });
