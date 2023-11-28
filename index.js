@@ -42,11 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 // add events
     contentInfo.forEach(content => {
-        var videoEntity = document.getElementById("entity" + content.id.toString());
+        // var videoEntity = document.getElementById("entity" + content.id.toString());
         var video = document.getElementById("video" + content.id.toString());
-        console.log("added event", videoEntity);
+        console.log("added event", video);
 
-        videoEntity.addEventListener('click', event => {
+        video.addEventListener('click', event => {
             if (!video.isPlaying) {
                 video.play();
             } else {
