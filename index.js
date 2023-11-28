@@ -15,12 +15,29 @@ const contentInfo = [
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
+    AFRAME.registerComponent('cursor-listener', {
+        init: function () {
+            contentInfo.forEach(content => {
+                var videoEntity = document.getElementById("entity" + content.id.toString());
+                var video = document.getElementById("video" + content.id.toString());
+
+                this.el.addEventListener('click', function () {
+                    if (!video.isPlaying) { 
+                        video.play(); 
+                    } else {
+                        video.stop();
+                    }
+                    videoEntity.setAttribute('visible', 'true');
+                });
+            });
+        }
+    });
+
     const sceneEl = document.querySelector('a-scene');
-	let arSystem;
-	sceneEl.addEventListener('loaded', function () {
-        window.alert("yo");
-	  arSystem = sceneEl.systems["mindar-image-system"];
-	});
+    let arSystem;
+    sceneEl.addEventListener('loaded', function () {
+        arSystem = sceneEl.systems["mindar-image-system"];
+    });
     const assetsDiv = document.getElementById("replaceMeWithAssets");
     let assetsEl = document.createElement("a-assets");
     contentInfo.forEach(content => {
