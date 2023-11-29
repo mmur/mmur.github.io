@@ -102,12 +102,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const assetsDiv = document.getElementById("replaceMeWithAssets");
     let assetsEl = document.createElement("a-assets");
+    assetsEl.setAttribute("timeout", "10000")
     contentInfo.forEach(content => {
         const newAsset = document.createElement("video");
         newAsset.setAttribute("id", content.name);
         newAsset.setAttribute("src", content.src);
         newAsset.setAttribute("loop", "true");
-        newAsset.setAttribute("autoplay", "true");
+        newAsset.setAttribute("preload", "none");
         newAsset.setAttribute("muted", "");
         assetsEl.appendChild(newAsset);
     });
