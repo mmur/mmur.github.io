@@ -90,6 +90,13 @@ const contentInfo = [
         "src": "./videos/vid_bakh_15.mp4",
         "type": "video",
     },
+
+    {
+        "id": 15,
+        "name": "tarbosaurusBataar",
+        "src": "./models/tarbosaurus_bataar/scene.gltf",
+        "type": "gltf",
+    },
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -104,62 +111,106 @@ document.addEventListener("DOMContentLoaded", () => {
     let assetsEl = document.createElement("a-assets");
     assetsEl.setAttribute("timeout", "10000")
     contentInfo.forEach(content => {
-        const newAsset = document.createElement("video");
-        newAsset.setAttribute("id", content.name);
-        newAsset.setAttribute("src", content.src);
-        newAsset.setAttribute("loop", "true");
-        newAsset.setAttribute("preload", "none");
-        newAsset.setAttribute("muted", "");
-        assetsEl.appendChild(newAsset);
+        if (content.type === "video") {
+            const newAsset = document.createElement("video");
+            newAsset.setAttribute("id", content.name);
+            newAsset.setAttribute("src", content.src);
+            newAsset.setAttribute("loop", "true");
+            newAsset.setAttribute("preload", "none");
+            newAsset.setAttribute("muted", "");
+            assetsEl.appendChild(newAsset);
+        } else {
+            const newAsset = document.createElement("a-asset-item");
+            newAsset.setAttribute("id", content.name);
+            newAsset.setAttribute("src", content.src);
+            assetsEl.appendChild(newAsset);
+        }
     });
     assetsDiv.parentNode.replaceChild(assetsEl, assetsDiv);
 
+    // video entities
     contentInfo.forEach(content => {
-        let entity = document.getElementById("entity" + content.id.toString());
-        entity.setAttribute("disabled", "false");
-        let video = document.getElementById("video" + content.id.toString());
-        video.setAttribute("src", "#" + content.name);
+        if (content.type == "video") {
+            let entity = document.getElementById("entity" + content.id.toString());
+            entity.setAttribute("disabled", "false");
+            let video = document.getElementById("video" + content.id.toString());
+            video.setAttribute("src", "#" + content.name);
+        }
+    });
+
+    // ar model entities
+    contentInfo.forEach(content => {
+        if (content.type == "gltf") {
+            let entity = document.getElementById("entity" + content.id.toString());
+            let video = document.getElementById("gltf" + content.id.toString());
+            video.setAttribute("src", "#" + content.name);
+        }
     });
 
 
-    // add events
+    // add video events
     contentInfo.forEach(content => {
-        var videoEntity = document.getElementById("entity" + content.id.toString());
+        if (content.type === "video") {
+            var videoEntity = document.getElementById("entity" + content.id.toString());
 
-        videoEntity.addEventListener("targetLost", event => {
-            contentIndex = -1;
-            console.log("lost");
-            const video = document.querySelector("#" + content.name);
-            video.muted = true;
-            video.pause();
-            video.currentTime = 0;
-        });
-
-        videoEntity.addEventListener("targetFound", event => {
-            if (event.srcElement.id === "entity" + content.id.toString()) {
-                contentIndex = content.id;
-                console.log("found");
+            videoEntity.addEventListener("targetLost", event => {
+                contentIndex = -1;
                 const video = document.querySelector("#" + content.name);
-                video.play();
-            }
-        });
+                video.muted = true;
+                video.pause();
+                video.currentTime = 0;
+            });
 
-        // const vid = document.querySelector("#" + content.name);
+            videoEntity.addEventListener("targetFound", event => {
+                if (event.srcElement.id === "entity" + content.id.toString()) {
+                    contentIndex = content.id;
+                    const video = document.querySelector("#" + content.name);
+                    video.play();
+                }
+            });
 
-        // vid.addEventListener("click", event => {
-        //     console.log("click", "entity" + content.id.toString());
-        //     if (event.srcElement.id === "entity" + content.id.toString()) {
-        //         contentIndex = content.id;
-        //         vid.muted = false;
-        //         vid.play();
-        //     }
-        // });
+            // const vid = document.querySelector("#" + content.name);
 
-        document.querySelector("#btnUnmute").addEventListener("click", (e) => {
-            if (contentIndex > -1 && contentIndex === content.id) {
-                console.log("muting ", contentIndex, document.querySelector("#" + content.name).muted);
-                document.querySelector("#" + content.name).muted = !document.querySelector("#" + content.name).muted;
-            }
-        });
+            // vid.addEventListener("click", event => {
+            //     console.log("click", "entity" + content.id.toString());
+            //     if (event.srcElement.id === "entity" + content.id.toString()) {
+            //         contentIndex = content.id;
+            //         vid.muted = false;
+            //         vid.play();
+            //     }
+            // });
+
+            document.querySelector("#btnUnmute").addEventListener("click", (e) => {
+                if (contentIndex > -1 && contentIndex === content.id) {
+                    console.log("muting ", contentIndex, document.querySelector("#" + content.name).muted);
+                    document.querySelector("#" + content.name).muted = !document.querySelector("#" + content.name).muted;
+                }
+            });
+        }
+    });
+    // add gltf events
+    contentInfo.forEach(content => {
+        if (content.type === "gltf") {
+            var gltfEntity = document.getElementById("entity" + content.id.toString());
+            gltfEntity.addEventListener("targetLost", event => {
+                console.log("model target lost");
+                contentIndex = -1;
+                const gltf = document.querySelector("#" + content.name);
+                gltf.setAttribute("animation-mixer", {
+                    timeScale: 0,
+                });
+            });
+
+            gltfEntity.addEventListener("targetFound", event => {
+                if (event.srcElement.id === "entity" + content.id.toString()) {
+                    console.log("model target found");
+                    contentIndex = content.id;
+                    const gltf = document.querySelector("#" + content.name);
+                    gltf.setAttribute("animation-mixer", {
+                        timeScale: 1,
+                    });
+                }
+            });
+        }
     });
 });

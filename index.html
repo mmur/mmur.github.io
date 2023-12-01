@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" name="apple-mobile-web-app-capable" content="yes">
-    <title>Байгалын Түүхийн Музэй WebAR</title>
+    <title>Байгалийн Түүхийн Музэй WebAR</title>
     <meta name="description" content="Image Tracked Videos" name="apple-mobile-web-app-capable" content="yes">
     <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/16/Stats.min.js"></script>
@@ -18,72 +18,94 @@
         <button id="btnUnmute">unmute</button>
     </div>
 
-    <a-scene mindar-image="imageTargetSrc: targets_combined.mind; maxTrack: 1" color-space="sRGB"
-        renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+    <a-scene
+        mindar-image="imageTargetSrc: targets_combined.mind; maxTrack: 1 filterMinCF:0.0001; filterBeta: 0.001; warmupTolerance: 0; missTolerance: 0"
+        color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
 
         <div id="replaceMeWithAssets"></div>
 
-        <a-entity id="entity0" mindar-image-target="targetIndex: 0" disabled="true">
+        <a-entity id="entity0" mindar-image-target="targetIndex: 20">
             <a-video id="video0" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity1" mindar-image-target="targetIndex: 1" disabled="true">
+        <a-entity id="entity1" mindar-image-target="targetIndex: 1">
             <a-video id="video1" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity2" mindar-image-target="targetIndex: 2" disabled="true">
+        <a-entity id="entity2" mindar-image-target="targetIndex: 2">
             <a-video id="video2" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity3" mindar-image-target="targetIndex: 3" disabled="true">
+        <a-entity id="entity3" mindar-image-target="targetIndex: 3">
             <a-video id="video3" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity4" mindar-image-target="targetIndex: 4" disabled="true">
+        <a-entity id="entity4" mindar-image-target="targetIndex: 4">
             <a-video id="video4" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity5" mindar-image-target="targetIndex: 5" disabled="true">
+        <a-entity id="entity5" mindar-image-target="targetIndex: 5">
             <a-video id="video5" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity6" mindar-image-target="targetIndex: 6" disabled="true">
+        <a-entity id="entity6" mindar-image-target="targetIndex: 6">
             <a-video id="video6" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity7" mindar-image-target="targetIndex: 7" disabled="true">
+        <a-entity id="entity7" mindar-image-target="targetIndex: 7">
             <a-video id="video7" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity8" mindar-image-target="targetIndex: 8" disabled="true">
+        <a-entity id="entity8" mindar-image-target="targetIndex: 8">
             <a-video id="video8" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity9" mindar-image-target="targetIndex: 9" disabled="true">
+        <a-entity id="entity9" mindar-image-target="targetIndex: 9">
             <a-video id="video9" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity10" mindar-image-target="targetIndex: 10" disabled="true">
+        <a-entity id="entity10" mindar-image-target="targetIndex: 10">
             <a-video id="video10" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity11" mindar-image-target="targetIndex: 11" disabled="true">
+        <a-entity id="entity11" mindar-image-target="targetIndex: 11">
             <a-video id="video11" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity12" mindar-image-target="targetIndex: 12" disabled="true">
+        <a-entity id="entity12" mindar-image-target="targetIndex: 12">
             <a-video id="video12" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity13" mindar-image-target="targetIndex: 13" disabled="true">
+        <a-entity id="entity13" mindar-image-target="targetIndex: 13">
             <a-video id="video13" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
-        <a-entity id="entity14" mindar-image-target="targetIndex: 14" disabled="true">
+        <a-entity id="entity14" mindar-image-target="targetIndex: 14">
             <a-video id="video14" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
+        <a-entity id="entity14" mindar-image-target="targetIndex: 15">
+            <a-video id="video14" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
+                muted="true"></a-video>
+        </a-entity>
+
+        <a-entity id="entity15" mindar-image-target="targetIndex: 0">
+            <a-gltf-model id="gltf15" rotation="90 0 0" position="0 0 0" scale="0.7 0.7 0.7" src="#"
+                animation-mixer></a-gltf-model>
+        </a-entity>
+        <!-- <a-entity id="entity16" mindar-image-target="targetIndex: 20">
+            <a-gltf-model id="gltf16" rotation="90 0 0" position="0 0 0" scale="10 10 10" src="#"
+                animation-mixer></a-gltf-model>
+        </a-entity>
+        <a-entity id="entity17" mindar-image-target="targetIndex: 20">
+            <a-gltf-model id="gltf17" rotation="90 0 0" position="0 0 0" scale="10 10 10" src="#"
+                animation-mixer></a-gltf-model>
+        </a-entity>
+        <a-entity id="entity18" mindar-image-target="targetIndex: 20">
+            <a-gltf-model id="gltf18" rotation="90 0 0" position="0 0 0" scale="10 10 10" src="#"
+                animation-mixer></a-gltf-model>
+        </a-entity> -->
 
         <a-camera position="0 0 0" look-controls="enabled: true"></a-camera>
     </a-scene>
