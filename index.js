@@ -1,11 +1,14 @@
 let contentIndex = -1;
 const contentInfo = [
-    // {
-    //     "id": 0,
-    //     "name": "solir",
-    //     "src": "./videos/vid_solir_01.mp4",
-    //     "type": "video"
-    // },
+    {
+        "id": 0,
+        // "name": "solir",
+        // "src": "./videos/vid_solir_01.mp4",
+        // "type": "video"
+        "name": "argali",
+        "src": "./videos/vid_argali_12.mp4",
+        "type": "video",
+    },
     {
         "id": 1,
         "name": "tsagaanErveehei",
@@ -67,7 +70,7 @@ const contentInfo = [
         "type": "video",
     },
     {
-        "id": 0,
+        "id": 11,
         "name": "argali",
         "src": "./videos/vid_argali_12.mp4",
         "type": "video",
