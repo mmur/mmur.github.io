@@ -94,7 +94,7 @@ const contentInfo = [
     {
         "id": 14,
         "name": "tarbosaurusBataar",
-        "src": "./models/tarbosaurus_bataar/scene.gltf",
+        "src": "./models/scene.gltf",
         "type": "gltf",
     },
 ];
@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
             newAsset.setAttribute("id", content.name);
             newAsset.setAttribute("src", content.src);
             assetsEl.appendChild(newAsset);
+            console.log(newAsset);
         }
     });
     assetsDiv.parentNode.replaceChild(assetsEl, assetsDiv);
@@ -137,12 +138,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ar model entities
-    contentInfo.forEach(content => {
-        if (content.type == "gltf") {
-            let video = document.getElementById("gltf" + content.id.toString());
-            video.setAttribute("src", "#" + content.name);
-        }
-    });
+    // contentInfo.forEach(content => {
+    //     if (content.type == "gltf") {
+    //         let gltfModel = document.getElementById("gltf" + content.id.toString());
+    //         gltfModel.setAttribute("src", "#" + content.name);
+    //     }
+    // });
 
 
     // add video events
