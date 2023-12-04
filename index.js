@@ -168,14 +168,42 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     });
-    window.addEventListener("click", ()=> {
+
+    window.addEventListener("click", () => {
         console.log("click");
-        if(contentIndex > -1 && contentInfo[contentIndex].type === "video"){
+        if (contentIndex > -1 && contentInfo[contentIndex].type === "video") {
             let content = contentInfo[contentIndex];
             console.log("toggle sound ", contentIndex, document.querySelector("#" + content.name).muted);
             document.querySelector("#" + content.name).muted = !document.querySelector("#" + content.name).muted;
-        } 
+        }
     });
+    //     videoEntity.addEventListener("click", event => {
+    //         console.log("click0");
+
+    //         if (event.srcElement.id === "entity" + content.id.toString()) {
+    //             contentIndex = content.id;
+    //             console.log("click match0", content.id);
+
+    //             const video = document.querySelector("#" + content.name);
+    //             video.muted = !video.muted;
+    //         }
+    //     });
+
+    //     var vid = document.querySelector("#" + content.name);
+    //     if (vid) {
+    //         console.log(vid);
+    //         vid.addEventListener("click", event => {
+    //             console.log("click");
+    //             if (event.srcElement.id === "video" + content.id.toString()) {
+    //                 console.log("click match", content.id);
+    //                 console.log("toggle sound ", contentIndex, vid.muted);
+    //                 vid.muted = !vid.muted;
+    //             }
+    //         });
+    //     }
+    // }
+
+
     // add gltf events
     // contentInfo.forEach(content => {
     //     if (content.type === "gltf") {
