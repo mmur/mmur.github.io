@@ -168,6 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
     window.addEventListener("click", ()=> {
+        console.log("click");
         if(contentIndex > -1 && contentInfo[contentIndex].type === "video"){
             let content = contentInfo[contentIndex];
             console.log("toggle sound ", contentIndex, document.querySelector("#" + content.name).muted);
