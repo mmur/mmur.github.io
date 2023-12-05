@@ -2,30 +2,34 @@
 <html>
 
 <head>
-    <meta charset="utf-8" name="apple-mobile-web-app-capable" content="yes">
+    <meta charset="utf-8" name="apple-mobile-web-app-capable" content="width=device-width, initial-scale=1">
     <title>Байгалийн Түүхийн Музэй WebAR</title>
     <meta name="description" content="Image Tracked Videos" name="apple-mobile-web-app-capable" content="yes">
-    <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/16/Stats.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image.prod.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.5/dist/mindar-image-aframe.prod.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/16/Stats.min.js"></script>
 </head>
 
 <body>
     <a-scene
         mindar-image="imageTargetSrc: targets_combined.mind; showStats: true; maxTrack: 1; filterMinCF:0.0001; filterBeta: 0.001; warmupTolerance: 0; missTolerance: 0"
         color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
-        device-orientation-permission-ui="enabled: true">
-        <a-cursor></a-cursor>
+        device-orientation-permission-ui="enabled: false">
 
         <div id="replaceMeWithAssets"></div>
         <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-        <a-entity id="entity0" mindar-image-target="targetIndex: 0">
-            <a-video id="video0" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
-                muted="true"></a-video>
+        <a-entity id="entity0" mindar-image-target="targetIndex: 1">
+            <!-- <a-video id="video0" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
+                muted="true"></a-video> -->
+            <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#tarbosaurusBataar" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
         </a-entity>
-        <a-entity id="entity1" mindar-image-target="targetIndex: 1">
+        <!-- <a-entity id="entity1" mindar-image-target="targetIndex: 1">
             <a-video id="video1" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
                 muted="true"></a-video>
         </a-entity>
@@ -80,9 +84,9 @@
 
         <a-entity id="entity14" mindar-image-target="targetIndex: 14">
             <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#tarbosaurusBataar" animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
-            <!-- <a-video id="video14" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
-            muted="true"></a-video> -->
-          </a-entity>
+            <a-video id="video14" class="clickable" src="#" width="1.3" heigth="1" position="0 0 0" scale="0.7 0.7 0.7"
+            muted="true"></a-video>
+        </a-entity> -->
 
 
     </a-scene>
