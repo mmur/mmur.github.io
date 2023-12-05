@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     const assetsDiv = document.getElementById("replaceMeWithAssets");
     let assetsEl = document.createElement("a-assets");
-    assetsEl.setAttribute("timeout", "10000")
+    assetsEl.setAttribute("timeout", "30000")
     contentInfo.forEach(content => {
         if (content.type === "video") {
             const newAsset = document.createElement("video");
@@ -121,12 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const newAsset = document.createElement("a-asset-item");
             newAsset.setAttribute("id", content.name);
             newAsset.setAttribute("src", content.src);
+            newAsset.setAttribute("response-type", "arraybuffer");
             assetsEl.appendChild(newAsset);
             console.log(newAsset);
         }
     });
     assetsDiv.parentNode.replaceChild(assetsEl, assetsDiv);
-
+    
     // video entities
     contentInfo.forEach(content => {
         if (content.type == "video") {
