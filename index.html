@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <meta charset="utf-8" name="apple-mobile-web-app-capable">
-    <title>Байгалийн Түүхийн Музэй WebAR</title>
+    <meta charset="utf-8" name="apple-mobile-web-app-capable" content="width=device-width, initial-scale=1">
+    <title>Байгалийн Түүхийн Музей WebAR</title>
     <meta name="description" content="Image Tracked Videos" name="apple-mobile-web-app-capable" content="yes">
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
@@ -19,11 +19,11 @@
         color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
         device-orientation-permission-ui="enabled: false">
 
-        <a-assets id="assets" timeout="30000">
-            <video id="bakh" src="./videos/vid_bakh_15.mp4" loop="true" preload="none" muted></video>
-            <video id="bambaiKhoshuutMogoi" src="./videos/vid_b_h_mogoi_13.mp4" loop="true" preload="none"
+        <a-assets id="assets">
+            <video id="bakh" src="./videos/vid_bakh_15.mp4" loop="true" preload="metadata" muted></video>
+            <video id="bambaiKhoshuutMogoi" src="./videos/vid_b_h_mogoi_13.mp4" loop="true" preload="metadata"
                 muted></video>
-            <video id="gurvel" src="./videos/vid_gurvel_14.mp4" loop="true" preload="none" muted></video>
+            <video id="gurvel" src="./videos/vid_gurvel_14.mp4" loop="true" preload="metadata" muted></video>
             <a-asset-item id="tarbosaurusBaatar" src="./models/scene.gltf"></a-asset-item>
         </a-assets>
 
@@ -46,7 +46,7 @@
                 src="#tarbosaurusBaatar" animation-mixer></a-gltf-model>
         </a-entity>
     </a-scene>
-    <script src="index.js"></script>
+    <script src="index2.js"></script>
 </body>
 
 </html>
